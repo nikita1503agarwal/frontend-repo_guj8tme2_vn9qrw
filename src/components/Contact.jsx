@@ -25,29 +25,28 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative bg-[#0a0b10] text-white py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_90%_100%,rgba(236,72,153,0.12),transparent)]" />
-      <div className="relative max-w-4xl mx-auto px-6">
+    <section id="contact" className="relative bg-black text-white">
+      <div className="mx-auto max-w-3xl px-4 py-16 md:py-24">
         <div className="text-center">
-          <h2 className="text-5xl md:text-6xl font-black tracking-tight">Let’s make something iconic</h2>
-          <p className="mt-4 text-white/70">Brief me with a few lines. I’ll reply within 24h.</p>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Contact</h2>
+          <p className="mt-2 text-sm text-white/60">Send a short note and I’ll reply within 24 hours.</p>
         </div>
 
-        <form onSubmit={submit} className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Input name="name" label="Your name" required />
+        <form onSubmit={submit} className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Input name="name" label="Name" required />
           <Input name="email" type="email" label="Email" required />
-          <Input name="company" label="Company (optional)" />
+          <Input name="company" label="Company" />
           <Input name="topic" label="Topic" />
           <div className="md:col-span-2">
             <Label>Message</Label>
-            <textarea name="message" required placeholder="Tell me about your project…" className="mt-2 w-full h-40 rounded-2xl bg-white/5 ring-1 ring-white/10 px-4 py-3 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-fuchsia-400" />
+            <textarea name="message" required placeholder="Tell me about your project…" className="mt-2 w-full h-36 rounded-[12px] border border-white/10 bg-white/5 px-3 py-2 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/20" />
           </div>
-          <div className="md:col-span-2 flex items-center gap-4">
-            <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.99 }} className="inline-flex items-center justify-center rounded-full px-8 py-3 font-semibold text-black bg-gradient-to-r from-lime-300 via-cyan-300 to-fuchsia-300">
-              {status === 'sending' ? 'Sending…' : 'Send message'}
+          <div className="md:col-span-2 flex items-center gap-3">
+            <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} className="rounded-[10px] border border-white/10 bg-white/90 text-black px-4 py-2 text-sm font-medium hover:bg-white">
+              {status === 'sending' ? 'Sending…' : 'Send'}
             </motion.button>
-            {status === 'sent' && <span className="text-lime-300">Message sent — thank you!</span>}
-            {status === 'error' && <span className="text-red-400">Something went wrong. Try again.</span>}
+            {status === 'sent' && <span className="text-green-300 text-sm">Sent — thank you!</span>}
+            {status === 'error' && <span className="text-red-400 text-sm">Something went wrong.</span>}
           </div>
         </form>
       </div>
@@ -56,14 +55,14 @@ export default function Contact() {
 }
 
 function Label({ children }) {
-  return <label className="text-sm uppercase tracking-widest text-white/60">{children}</label>
+  return <label className="text-xs uppercase tracking-wider text-white/50">{children}</label>
 }
 
 function Input({ label, ...props }) {
   return (
     <div>
       <Label>{label}</Label>
-      <input {...props} className="mt-2 w-full rounded-2xl bg-white/5 ring-1 ring-white/10 px-4 py-3 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-300" />
+      <input {...props} className="mt-2 w-full rounded-[12px] border border-white/10 bg-white/5 px-3 py-2 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/20" />
     </div>
   )
 }

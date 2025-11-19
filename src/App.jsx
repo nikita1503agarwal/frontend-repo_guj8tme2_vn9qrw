@@ -6,13 +6,15 @@ import Contact from './components/Contact'
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0a0b10] text-white">
+    <div className="min-h-screen bg-black text-white selection:bg-white/10">
       <Navbar />
-      <Hero />
-      <About />
-      <Work />
-      <Skills />
-      <Contact />
+      <main className="pt-16">
+        <Hero />
+        <About />
+        <Work />
+        <Skills />
+        <Contact />
+      </main>
       <Footer />
     </div>
   )
@@ -20,29 +22,31 @@ function App() {
 
 function Navbar() {
   return (
-    <div className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-black/20 border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-black tracking-tight text-white text-lg">art-future</a>
-        <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
+    <header className="fixed top-0 inset-x-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2 text-sm text-white/80 hover:text-white">
+          <span className="inline-grid h-6 w-6 place-items-center rounded-[6px] bg-white/5 border border-white/10">✦</span>
+          <span className="font-semibold tracking-tight">Portfolio</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-6 text-sm text-white/70">
           <a href="#about" className="hover:text-white">About</a>
           <a href="#work" className="hover:text-white">Work</a>
           <a href="#contact" className="hover:text-white">Contact</a>
-          <a href="/test" className="text-white/50 hover:text-white">API test</a>
         </nav>
       </div>
-    </div>
+    </header>
   )
 }
 
 function Footer() {
   return (
-    <footer className="relative bg-[#0a0b10] text-white py-16">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <p className="text-white/50">© {new Date().getFullYear()} — Built for the future.</p>
-        <div className="flex gap-4 text-white/60">
-          <a href="#" className="hover:text-white">Twitter</a>
-          <a href="#" className="hover:text-white">Dribbble</a>
-          <a href="#" className="hover:text-white">GitHub</a>
+    <footer className="border-t border-white/10">
+      <div className="mx-auto max-w-6xl px-4 py-10 flex items-center justify-between text-sm text-white/60">
+        <p>© {new Date().getFullYear()} — All rights reserved.</p>
+        <div className="flex gap-4">
+          <a className="hover:text-white" href="#">Twitter</a>
+          <a className="hover:text-white" href="#">Dribbble</a>
+          <a className="hover:text-white" href="#">GitHub</a>
         </div>
       </div>
     </footer>

@@ -1,43 +1,34 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import Spline from '@splinetool/react-spline'
+import { motion } from 'framer-motion'
 
 export default function Hero() {
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 600], [0, -120])
-  const opacity = useTransform(scrollY, [0, 400], [1, 0.2])
-
   return (
-    <section className="relative min-h-[90vh] overflow-hidden bg-[#0a0b10] text-white">
-      <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/EF7JOSsHLk16Tlw9/scene.splinecode" style={{ width: '100%', height: '100%' }} />
-      </div>
+    <section className="relative bg-black text-white">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="grid md:grid-cols-[1.2fr_1fr] gap-10 items-center py-16 md:py-24">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
+              Minimal. Calm. Precise.
+            </h1>
+            <p className="mt-5 text-base md:text-lg text-white/70 leading-relaxed">
+              A Notion-inspired portfolio on a pure black canvas. Clean blocks, soft cards, and tasteful icons showcase work without distraction.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="#work" className="rounded-[10px] border border-white/10 bg-white/5 px-4 py-2 text-sm hover:bg-white/10">View work</a>
+              <a href="#contact" className="rounded-[10px] border border-white/10 px-4 py-2 text-sm hover:bg-white/10">Contact</a>
+            </div>
+          </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0b10]/30 to-[#0a0b10]" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-24">
-        <motion.h1 style={{ y, opacity }} className="text-[9vw] leading-[0.9] font-extrabold tracking-[-0.04em] select-none">
-          <span className="block bg-gradient-to-br from-fuchsia-400 via-cyan-300 to-lime-300 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(168,85,247,0.35)]">
-            FUTURE-MODE
-          </span>
-          <span className="block text-white/90">PORTFOLIO</span>
-        </motion.h1>
-
-        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.8 }} viewport={{ once: true }} className="mt-8 max-w-2xl text-lg md:text-2xl text-white/70">
-          Digital artist crafting interactive, cinematic web experiences. I design in motion, code with emotion.
-        </motion.p>
-
-        <div className="mt-10 flex flex-wrap gap-4">
-          <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} href="#work" className="pointer-events-auto group relative inline-flex items-center gap-3 rounded-full px-7 py-3 text-sm font-semibold text-black bg-gradient-to-r from-lime-300 via-cyan-300 to-fuchsia-300">
-            <span>View Work</span>
-            <span className="h-2 w-2 rounded-full bg-black/70 group-hover:scale-150 transition-transform" />
-          </motion.a>
-          <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }} href="#contact" className="pointer-events-auto inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold text-white/90 ring-1 ring-white/20 hover:ring-white/40">
-            Get in touch
-          </motion.a>
+          <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="grid grid-cols-2 gap-3">
+            {[1,2,3,4].map((i) => (
+              <div key={i} className="aspect-[4/3] rounded-[14px] border border-white/10 bg-white/5 overflow-hidden">
+                <img src={`https://images.unsplash.com/photo-15${i}000000-0a0a0a0a0a0a?auto=format&fit=crop&w=800&q=60`} alt="" className="h-full w-full object-cover opacity-90" />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
   )
 }
